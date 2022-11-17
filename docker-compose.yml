@@ -1,0 +1,24 @@
+version: '3.0'
+
+services:
+  backend: #TODO
+    image: "backend"
+
+  frontend: #TODO
+    image: "frontend"
+
+  nginx: #TODO
+    image: "nginx"
+
+
+networks: #TODO
+  chat-platform-network:
+
+volumes: #TODO
+  chat-platform-volumes:
+
+
+
+  
+
+

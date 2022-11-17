@@ -2,6 +2,9 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "chat-platform": "apps/chat-platform"
+    "chat-platform": "apps/chat-platform",
+    "chat-platform-frontend": "apps/chat-platform-frontend",
+    "chat-platform-frontend-e2e": "apps/chat-platform-frontend-e2e",
+    "ui": "libs/ui"
   }
 }
