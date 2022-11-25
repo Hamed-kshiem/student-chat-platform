@@ -1,6 +1,16 @@
 version: '3.0'
 
 services:
+  #Mongo-db
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
   backend: #TODO
     image: "backend"
 
@@ -11,6 +21,7 @@ services:
     image: "nginx"
 
 
+
 networks: #TODO
   chat-platform-network:
 
@@ -19,6 +30,6 @@ volumes: #TODO
 
 
 
-  
+
 
 
