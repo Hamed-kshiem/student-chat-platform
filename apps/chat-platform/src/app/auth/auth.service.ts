@@ -11,9 +11,9 @@ export class AuthService implements KeycloakConnectOptionsFactory {
   createKeycloakConnectOptions(): KeycloakConnectOptions {
     return {
       authServerUrl: 'http://localhost:8180/auth',
-      realm: 'nest-example',
-      clientId: 'nest-api',
-      secret: '05c1ff5e-f9ba-4622-98e3-c4c9d280546e',
+      realm: 'chat-app',
+      clientId: 'Nest-backend-app',
+      secret: 'yJNgeXSvg2tm3Fx5k9ryrdpur7se6QzQ',
       cookieKey: 'KEYCLOAK_JWT',
       logLevels: ['verbose'],
       useNestLogger: false,

@@ -1,14 +1,24 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
 import NxWelcome from './nx-welcome';
-
 import { Route, Routes, Link } from 'react-router-dom';
+import { useKeycloak } from '@react-keycloak/web';
 
 export function App() {
+  const { keycloak } = useKeycloak();
+
   return (
     <>
-      <NxWelcome title="chat-platform-frontend" />
+      <div>
+        {keycloak.authenticated ? (
+          <button onClick={() => keycloak.logout()}>logout</button>
+          ) : (
+          <button onClick={() => keycloak.login()}>login</button>
+        )}
+      </div>
+      {/* <NxWelcome title="chat-platform-frontend" /> */}
       <div />
+      <div>{JSON.stringify(keycloak.tokenParsed,null,"\t")}</div>
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}

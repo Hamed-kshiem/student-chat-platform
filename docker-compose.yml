@@ -1,35 +1,11 @@
 version: '3.0'
-
 services:
-  #Mongo-db
-  mongo:
-    image: mongo
-    restart: always
-    container_name: mongo-db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
+  auth:
+    image: quay.io/keycloak/keycloak:18.0.2
     ports:
-      - 27017:27017
-  backend: #TODO
-    image: "backend"
-
-  frontend: #TODO
-    image: "frontend"
-
-  nginx: #TODO
-    image: "nginx"
-
-
-
-networks: #TODO
-  chat-platform-network:
-
-volumes: #TODO
-  chat-platform-volumes:
-
-
-
-
-
-
+      - "8080:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin 
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: 
+      - start-dev 
