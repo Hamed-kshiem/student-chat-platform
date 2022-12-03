@@ -9,13 +9,30 @@ import { Message } from './schema/message.schema';
 @Injectable()
 export class MessageService {
   constructor(
-    @InjectModel(Message.name) private messageModel: Model<Message>,
-    @Inject(forwardRef(() => ChannelService))
-    private roomService: ChannelService
+    @InjectModel(Message.name) private messageModel: Model<Message>
   ) {}
 
   create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message';
+    console.log('recived', createMessageDto);
+    const newMessage = new this.messageModel(createMessageDto);
+    return newMessage.save();
+  }
+
+  async getMessagesByChannelId(channelId: string) {
+    return await this.messageModel.find({ channelId }).sort({ createdAt: -1 });
+  }
+
+  async getMessagesByUserId(userId: string) {
+    return await this.messageModel.find({
+      $or: [{ from: userId }, { to: userId }],
+    });
+  }
+
+  async getMessagesByUserIdAndChannelId(userId: string, channelId: string) {
+    return await this.messageModel.find({
+      $or: [{ from: userId }, { to: userId }],
+      channelId,
+    });
   }
 
   findAll() {

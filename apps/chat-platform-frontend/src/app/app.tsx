@@ -18,7 +18,7 @@ export function App() {
       </div>
       {/* <NxWelcome title="chat-platform-frontend" /> */}
       <div />
-      <div>{JSON.stringify(keycloak.tokenParsed,null,"\t")}</div>
+      <div>{JSON.stringify(keycloak,null,"\t")}</div>
 
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}

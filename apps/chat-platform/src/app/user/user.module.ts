@@ -1,3 +1,4 @@
+import { Channel, ChannelSchema } from './../channel/Schema/channel.schema';
 import { Module } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserGateway } from './user.gateway';
@@ -13,6 +14,10 @@ import { User, UserSchema } from './schema/user.schema';
       {
         name: User.name,
         schema: UserSchema,
+      },
+      {
+        name: Channel.name,
+        schema: ChannelSchema,
       },
     ]),
   ],

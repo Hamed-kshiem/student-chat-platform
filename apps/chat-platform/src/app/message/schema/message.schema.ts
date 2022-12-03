@@ -9,14 +9,14 @@ export class Message extends Document {
   @Prop({ required: true })
   content: string;
 
-  @Prop({ type: ObjectId, ref: Channel.name })
-  Channel?: Channel;
+  @Prop()
+  channelId?: string;
 
-  @Prop({ type: ObjectId, ref: User.name })
-  from: User;
+  @Prop()
+  from: string;
 
-  @Prop({ type: ObjectId, ref: User.name })
-  to?: User;
+  @Prop()
+  to?: string;
 
   @Prop({
     type: Date,

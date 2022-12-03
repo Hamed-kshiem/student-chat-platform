@@ -22,7 +22,7 @@ export class User extends Document {
   password?: string;
 
   @Prop()
-  type?: string;
+  sub?: string;
 
   @Prop()
   lastLogin?: Date;

@@ -1,3 +1,4 @@
+import { Channel } from './../channel/Schema/channel.schema';
 import { UserGateway } from './user.gateway';
 import { forwardRef, Injectable, Inject } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,13 +10,37 @@ import { User } from './schema/user.schema';
 @Injectable()
 export class UserService {
   constructor(
-    @InjectModel(User.name) private catModel: Model<User>,
-    @Inject(forwardRef(() => UserGateway)) private userGateway: UserGateway
+    @InjectModel(User.name) private userModel: Model<User>,
+    @Inject(forwardRef(() => UserGateway)) private userGateway: UserGateway,
+    @InjectModel(Channel.name) private channelModel: Model<Channel>
   ) {}
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  createUserIfNotExisits(createUserDto: CreateUserDto) {
+    return this.userModel.updateOne(
+      { username: createUserDto.username },
+      { $setOnInsert: createUserDto },
+      { upsert: true }
+    );
   }
 
+  getUserChannels(userId: string) {
+    return this.channelModel.find({ members: userId });
+  }
+
+  getUserStatus(userId: string) {
+    return this.userModel.findById(userId).select('online');
+  }
+
+  updateUserStatus(userId: string, status: boolean) {
+    return this.userModel.updateOne(
+      { username: userId },
+      { $set: { online: status } }
+    );
+  }
+  getUserByUsername(username: string) {
+    return this.userModel.findOne({
+      username: username,
+    });
+  }
   findAll() {
     return `This action returns all user`;
   }

@@ -16,7 +16,8 @@ import { Message, MessageSchema } from './schema/message.schema';
         schema: MessageSchema,
       },
     ]),
-    ChannelModule,
+    // ChannelModule,
   ],
+  exports: [MessageService],
 })
 export class MessageModule {}
