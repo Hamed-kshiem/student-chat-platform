@@ -12,7 +12,7 @@ export class Channel extends Document {
   @Prop({ type: [String] })
   members: string[];
 
-  /* @Prop({ type: [{ type: ObjectId, ref: Message.name }] })
-  messages: Message[];*/
+  @Prop({ type: [{ type: ObjectId, ref: Message.name }] })
+  messages: Message[];
 }
 export const ChannelSchema = SchemaFactory.createForClass(Channel);

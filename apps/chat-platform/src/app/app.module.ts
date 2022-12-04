@@ -24,16 +24,16 @@ import { APP_GUARD } from '@nestjs/core';
     MessageModule,
     UserModule,
     ChannelModule,
-    KeycloakConnectModule.registerAsync({
+    /* KeycloakConnectModule.registerAsync({
       useExisting: AuthService,
       imports: [AuthModule],
-    }),
+    }),*/
     AuthModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    {
+    /*  {
       provide: APP_GUARD,
       useClass: AuthGuard,
     },
@@ -44,7 +44,7 @@ import { APP_GUARD } from '@nestjs/core';
     {
       provide: APP_GUARD,
       useClass: RoleGuard,
-    },
+    },*/
   ],
 })
 export class AppModule {}

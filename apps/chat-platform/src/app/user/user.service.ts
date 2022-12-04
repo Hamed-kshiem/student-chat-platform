@@ -27,7 +27,7 @@ export class UserService {
   }
 
   getUserStatus(userId: string) {
-    return this.userModel.findById(userId).select('online');
+    return this.userModel.findOne({ userId }).select('online');
   }
 
   updateUserStatus(userId: string, status: boolean) {
@@ -42,7 +42,11 @@ export class UserService {
     });
   }
   findAll() {
-    return `This action returns all user`;
+    return this.userModel.find();
+  }
+
+  createUser(createUserDto: CreateUserDto) {
+    return this.userModel.create(createUserDto);
   }
 
   findOne(id: number) {

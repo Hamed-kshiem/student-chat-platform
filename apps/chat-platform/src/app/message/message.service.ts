@@ -19,7 +19,7 @@ export class MessageService {
   }
 
   async getMessagesByChannelId(channelId: string) {
-    return await this.messageModel.find({ channelId }).sort({ createdAt: -1 });
+    return await this.messageModel.find({ channelId }).sort({ createdAt: 1 });
   }
 
   async getMessagesByUserId(userId: string) {
@@ -37,17 +37,5 @@ export class MessageService {
 
   findAll() {
     return `This action returns all message`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} message`;
-  }
-
-  update(id: number, updateMessageDto: UpdateMessageDto) {
-    return `This action updates a #${id} message`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} message`;
   }
 }

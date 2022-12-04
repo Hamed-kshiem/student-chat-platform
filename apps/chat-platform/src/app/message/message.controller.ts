@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { MessageService } from './message.service';
-
+@ApiTags('message')
 @Controller('message')
 export class MessageController {
   constructor(private readonly messageService: MessageService) {}
@@ -11,12 +12,12 @@ export class MessageController {
   }
 
   @Get('channel/:channelId')
-  getMessagesByChannelId(channelId: string) {
+  getMessagesByChannelId(@Param('channelId') channelId: string) {
     return this.messageService.getMessagesByChannelId(channelId);
   }
 
   @Get('user/:userId')
-  getMessagesByUserId(userId: string) {
+  getMessagesByUserId(@Param('userId') userId: string) {
     return this.messageService.getMessagesByUserId(userId);
   }
 

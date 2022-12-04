@@ -20,19 +20,4 @@ export class ChannelGateway {
   findAll() {
     return this.channelService.findAll();
   }
-
-  @SubscribeMessage('findOneChannel')
-  findOne(@MessageBody() id: number) {
-    return this.channelService.findOne(id);
-  }
-
-  @SubscribeMessage('updateChannel')
-  update(@MessageBody() updateChannelDto: UpdateChannelDto) {
-    return this.channelService.update(updateChannelDto.id, updateChannelDto);
-  }
-
-  @SubscribeMessage('removeChannel')
-  remove(@MessageBody() id: number) {
-    return this.channelService.remove(id);
-  }
 }
