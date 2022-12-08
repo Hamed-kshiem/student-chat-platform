@@ -19,7 +19,7 @@ export class ChannelService {
       this.channelModel
         .findByIdAndUpdate(
           channelId,
-          { $push: { messages: newMessage } },
+          { $push: { messages: newMessage }, lastModified: new Date() },
           { new: true }
         )
         .then((res) => {

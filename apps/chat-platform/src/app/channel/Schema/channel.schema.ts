@@ -14,5 +14,11 @@ export class Channel extends Document {
 
   @Prop({ type: [{ type: ObjectId, ref: Message.name }] })
   messages: Message[];
+
+  @Prop({
+    type: Date,
+    default: Date.now,
+  })
+  lastModified: Date;
 }
 export const ChannelSchema = SchemaFactory.createForClass(Channel);

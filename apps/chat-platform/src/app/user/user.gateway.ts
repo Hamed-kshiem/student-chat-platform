@@ -16,7 +16,7 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
     @Inject(forwardRef(() => UserService)) private userService: UserService
   ) {}
   handleConnection(client: any, ...args: any[]) {
-    //console.log(client);
+    console.log(client);
     //console.log(args);
   }
   handleDisconnect(client: any) {
@@ -27,25 +27,5 @@ export class UserGateway implements OnGatewayDisconnect, OnGatewayConnection {
   create(@MessageBody() createUserDto: CreateUserDto) {
     console.log(createUserDto);
     // return this.userService.create(createUserDto);
-  }
-
-  @SubscribeMessage('findAllUser')
-  findAll() {
-    return this.userService.findAll();
-  }
-
-  @SubscribeMessage('findOneUser')
-  findOne(@MessageBody() id: number) {
-    return this.userService.findOne(id);
-  }
-
-  @SubscribeMessage('updateUser')
-  update(@MessageBody() updateUserDto: UpdateUserDto) {
-    return this.userService.update(updateUserDto.id, updateUserDto);
-  }
-
-  @SubscribeMessage('removeUser')
-  remove(@MessageBody() id: number) {
-    return this.userService.remove(id);
   }
 }
