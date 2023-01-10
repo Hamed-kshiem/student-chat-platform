@@ -23,6 +23,7 @@
     "@nestjs/websockets": "^9.2.0",
     "@react-keycloak/web": "^3.4.0",
     "core-js": "^3.6.5",
+    "emoji-picker-react": "^4.4.7",
     "keycloak-connect": "^18.0.2",
     "mongoose": "^6.7.3",
     "nest-keycloak-connect": "^1.9.0",
