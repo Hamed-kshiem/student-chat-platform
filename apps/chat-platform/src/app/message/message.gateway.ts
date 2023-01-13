@@ -15,10 +15,10 @@ export class MessageGateway
 {
   constructor(private readonly messageService: MessageService) {}
   handleConnection(client: any, ...args: any[]) {
-    throw new Error('Method not implemented.');
+    console.log('client connected');
   }
   handleDisconnect(client: any) {
-    throw new Error('Method not implemented.');
+    console.log('client disconnected');
   }
 
   @SubscribeMessage('createMessage')

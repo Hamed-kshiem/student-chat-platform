@@ -82,9 +82,11 @@ export function App() {
             </ul>
               
               {keycloak.authenticated ? (
+                <div>
+                {localStorage.getItem('currentUser')}
                 <button onClick={() => {keycloak.logout();}} className="btn btn-outline-success">
                 Logout
-              </button>          ) : (
+              </button>     </div>     ) : (
                 <button onClick={() => {keycloak.login()}} className="btn btn-outline-success">
                 Login
               </button>        )}

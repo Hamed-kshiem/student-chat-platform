@@ -12,7 +12,14 @@ import { UpdateChannelDto } from './dto/update-channel.dto';
 import { Socket, Server } from 'socket.io';
 import { Logger } from '@nestjs/common';
 
-@WebSocketGateway({ namespace: '/channel' })
+@WebSocketGateway({
+  namespace: '/channel',
+  cors: {
+    origin: ['http://localhost:4200', 'localhost:4200'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+})
 export class ChannelGateway implements OnGatewayInit {
   @WebSocketServer() wss: Server;
   private logger: Logger = new Logger('channelGateway');
@@ -37,17 +44,21 @@ export class ChannelGateway implements OnGatewayInit {
       message.channel,
       message.message
     );
+    console.log(message);
     this.wss.to(message.channel).emit('channelToClient', message);
+    //.to(message.channel)
   }
 
   @SubscribeMessage('joinChannel')
-  handleChannelJoin(client: Socket, channel: string) {
-    client.join(channel);
-    client.emit('joinedChannel', channel);
+  handleChannelJoin(client: Socket, channel: any) {
+    console.log('joinChannel', channel.channel, client.id);
+    client.join(channel.channel);
+    client.emit('joinChannel', channel.channel);
   }
 
   @SubscribeMessage('leaveChannel')
   handleChannelLeave(client: Socket, channel: string) {
+    console.log('leaveChannel', channel);
     client.leave(channel);
     client.emit('leftChannel', channel);
   }
