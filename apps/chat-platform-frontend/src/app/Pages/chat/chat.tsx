@@ -192,7 +192,7 @@ export function Chat(props) {
                       className="chat-messages p-4"
                       style={{ height: '80vh' }}
                     >
-                      //start message
+                      {messages===undefined ||messages===null || messages.length===0  ?"please select a channel": ""}
                       {messages.map((message) => (
                         <div key={message.id}>
                           <div className={`chat-message-${message.from==currentUser? "right":"left"} pb-4`}>
