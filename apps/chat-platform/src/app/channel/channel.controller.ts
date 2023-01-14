@@ -20,7 +20,10 @@ export class ChannelController {
   }
 
   @Get('checkifchannelexists/:userId1/:userId2')
-  checkIfChannelExists(userId1: string, userId2: string) {
+  checkIfChannelExists(
+    @Param('userId1') userId1: string,
+    @Param('userId2') userId2: string
+  ) {
     return this.channelService.checkIfChannelExists(userId1, userId2);
   }
 

@@ -56,6 +56,7 @@ export class ChannelService {
   }
 
   checkIfChannelExists(userId1: string, userId2: string): Promise<boolean> {
+    console.log(userId1, userId2, 'getChannelbyUserIds');
     return new Promise((resolve, reject) => {
       this.channelModel
         .find({
