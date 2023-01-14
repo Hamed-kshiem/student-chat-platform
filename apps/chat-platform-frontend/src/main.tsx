@@ -21,8 +21,29 @@ const setTokens = () => {
       sessionStorage.setItem('react-token', token);
       localStorage.setItem('token', token);
       localStorage.setItem('currentUser', idTokenParsed['preferred_username']); // For case inbox filter api
-  }
+      localStorage.setItem('refreshToken', refreshToken);
+      localStorage.setItem('idTokenParsed', JSON.stringify(idTokenParsed));                               
+    }
+    createUserIfNotexsists();
 };
+
+const createUserIfNotexsists = async () => {
+  fetch('http://localhost:3333/api/user/createUserIfNotExisits ', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    "username": localStorage.getItem('currentUser'),
+    "firstName": localStorage.getItem('idTokenParsed')['given_name'],
+    "lastName": localStorage.getItem('idTokenParsed')['family_name'],
+    "email": localStorage.getItem('idTokenParsed')['email'],
+  })
+}).then(res => console.log(res))
+  .then(res => console.log(res));
+}
+
 
 const refreshAccessToken = () => {
   keycloak

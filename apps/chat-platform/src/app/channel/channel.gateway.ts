@@ -57,9 +57,9 @@ export class ChannelGateway implements OnGatewayInit {
   }
 
   @SubscribeMessage('leaveChannel')
-  handleChannelLeave(client: Socket, channel: string) {
-    console.log('leaveChannel', channel);
-    client.leave(channel);
-    client.emit('leftChannel', channel);
+  handleChannelLeave(client: Socket, channel: any) {
+    console.log('leaveChannel', channel.channel);
+    client.leave(channel.channel);
+    client.emit('leaveChannel', channel.channel);
   }
 }

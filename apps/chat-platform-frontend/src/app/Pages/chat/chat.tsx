@@ -46,7 +46,8 @@ export function Chat(props) {
     );
     const fetchedMessages = await response.json(response);
     setMessages(fetchedMessages);
-//TODO scroll to bottom
+    bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "end"});
+
 
   }
 
@@ -84,6 +85,7 @@ export function Chat(props) {
 
   useEffect(() => {
      if (selectedChannel) {
+      socket.emit('leaveChannel', { channel: selectedChannel._id });
       fetchMessages(selectedChannel._id);
       socket.emit('joinChannel', { channel: selectedChannel._id });
      }
