@@ -64,6 +64,8 @@ export function Chat(props) {
     console.log('msg', messages);
     setMessages((messages)=>[...messages, msg]);
     console.log('afet msg', messages);
+    bottomRef.current?.scrollIntoView({behavior: 'smooth', block: "end"});
+
   }
   function sendChatMessage() {
     socket.emit('sendMessage', { sender: currentUser, channel: selectedChannel._id, message: 
