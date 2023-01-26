@@ -60,7 +60,7 @@ export function Home(props: HomeProps) {
       console.log(createdchannel);
       window.alert("channel created");
       redirect('/chat');
-      window.location.replace("localhost:4200/chat");
+      window.location.replace("http://localhost:4200/chat");
       console.log(doeschannelexsists);
   }
   else{
