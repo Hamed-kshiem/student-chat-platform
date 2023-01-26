@@ -34,51 +34,31 @@ export function App() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Link
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <div className="dropdown-item" >
-                      Action
-                    </div>
-                  </li>
-                  <li>
-                    <div className="dropdown-item" >
-                      Another action
-                    </div>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                 
-                </ul>
-              </li>
-              <li className="nav-item">
+                <li className="nav-item">
                 <div><Link className="nav-link " to={"/home"}>Home</Link></div>
               </li>
               <li>
                   <div><Link className="nav-link " to={"/chat"}>Chat</Link></div>
 
                   </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="https://github.com/Hamed-kshiem/student-chat-platform.git"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Github Repository
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <div className="dropdown-item">
+                      https://github.com/Hamed-kshiem/student-chat-platform.git
+                    </div>
+                  </li>
+                </ul>
+              </li>
             </ul>
               
               {keycloak.authenticated ? (
