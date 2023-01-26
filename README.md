@@ -24,7 +24,7 @@ Below are our core plugins:
   - `npm install --save-dev @nrwl/express`
 - [Node](https://nodejs.org)
   - `npm install --save-dev @nrwl/node`
-- [Keycloak] (https://www.npmjs.com/package/keycloak-js)
+- [Keycloak](https://www.npmjs.com/package/keycloak-js)
   - `npm i keycloak-js`
 
 There are also many [community plugins](https://nx.dev/community) you could add.
